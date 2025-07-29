@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gRB/io9ANTc=",
+  "dgSpecHash": "AtFLbASWaT8=",
   "success": true,
   "projectFilePath": "C:\\Users\\Владислав\\RiderProjects\\na4shtab.PatientApp\\na4shtab.PatientApp\\na4shtab.PatientApp.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "C:\\Users\\Владислав\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.7\\microsoft.entityframeworkcore.relational.9.0.7.nupkg.sha512",
     "C:\\Users\\Владислав\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\9.0.7\\microsoft.entityframeworkcore.sqlite.9.0.7.nupkg.sha512",
     "C:\\Users\\Владислав\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\9.0.7\\microsoft.entityframeworkcore.sqlite.core.9.0.7.nupkg.sha512",
+    "C:\\Users\\Владислав\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\9.0.7\\microsoft.entityframeworkcore.tools.9.0.7.nupkg.sha512",
     "C:\\Users\\Владислав\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.7\\microsoft.extensions.caching.abstractions.9.0.7.nupkg.sha512",
     "C:\\Users\\Владислав\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.7\\microsoft.extensions.caching.memory.9.0.7.nupkg.sha512",
     "C:\\Users\\Владислав\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.7\\microsoft.extensions.configuration.abstractions.9.0.7.nupkg.sha512",
