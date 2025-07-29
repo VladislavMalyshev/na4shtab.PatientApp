@@ -1,28 +1,40 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using na4shtab.PatientApp.ViewModels;
-using na4shtab.PatientApp.Views;
+using Avalonia.ReactiveUI;
+using Splat;
+using na4shtab.PatientApp.Services;
 
-namespace na4shtab.PatientApp;
-
-public partial class App : Application
+namespace na4shtab.PatientApp
 {
-    public override void Initialize()
+    public class App : Application
     {
-        AvaloniaXamlLoader.Load(this);
-    }
-
-    public override void OnFrameworkInitializationCompleted()
-    {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        public override void Initialize()
         {
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainWindowViewModel(),
-            };
+            AvaloniaXamlLoader.Load(this);
+            
+            Locator.CurrentMutable.RegisterLazySingleton<IPatientService>(() => new PatientService());
+            Locator.CurrentMutable.RegisterLazySingleton<IProcedureService>(() => new ProcedureService());
+            Locator.CurrentMutable.RegisterLazySingleton<IVisitService>(()     => new VisitService());
         }
 
-        base.OnFrameworkInitializationCompleted();
+        public override void OnFrameworkInitializationCompleted()
+        {
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.MainWindow = new Views.MainWindow
+                {
+                    DataContext = new ViewModels.MainWindowViewModel()
+                };
+            }
+
+            base.OnFrameworkInitializationCompleted();
+        }
+        
+        public static AppBuilder BuildAvaloniaApp()
+            => AppBuilder.Configure<App>()
+                .UsePlatformDetect()
+                .LogToTrace()
+                .UseReactiveUI();
     }
 }

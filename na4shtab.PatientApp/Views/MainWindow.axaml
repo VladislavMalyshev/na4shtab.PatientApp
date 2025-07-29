@@ -1,18 +1,20 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:na4shtab.PatientApp.ViewModels"
+        xmlns:vm="using:na4shtab.PatientApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="na4shtab.PatientApp.Views.MainWindow"
-        Title="PatientApp" Width="900" Height="600"
-        x:DataType="vm:MainWindowViewModel">
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="na4shtab.PatientApp">
 
-    <DockPanel>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="4">
-            <Button Content="Пациенты"   Command="{Binding ShowPatientsCmd}"   Margin="2"/>
-            <Button Content="Процедуры"   Command="{Binding ShowProceduresCmd}" Margin="2"/>
-            <Button Content="История"     Command="{Binding ShowVisitsCmd}"     Margin="2"/>
-        </StackPanel>
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
 
-        <ContentControl Content="{Binding Current}" />
-    </DockPanel>
+    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
 </Window>
-
