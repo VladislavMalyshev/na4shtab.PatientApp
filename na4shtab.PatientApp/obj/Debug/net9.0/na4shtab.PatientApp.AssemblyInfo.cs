@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("na4shtab.PatientApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a92caa3cd0d1c30ed9fa20b65753d183329b5e6a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38446228cf9fb16de89d07e93b65a0379bf1e5d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("na4shtab.PatientApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("na4shtab.PatientApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

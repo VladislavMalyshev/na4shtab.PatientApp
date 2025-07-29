@@ -15,7 +15,8 @@
           "Avalonia.ReactiveUI": "11.3.2",
           "Avalonia.Themes.Fluent": "11.3.2",
           "Microsoft.EntityFrameworkCore.Design": "9.0.7",
-          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.7"
+          "Microsoft.EntityFrameworkCore.Sqlite": "9.0.7",
+          "Microsoft.EntityFrameworkCore.Tools": "9.0.7"
         },
         "runtime": {
           "na4shtab.PatientApp.dll": {}
@@ -788,6 +789,11 @@
           }
         }
       },
+      "Microsoft.EntityFrameworkCore.Tools/9.0.7": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "9.0.7"
+        }
+      },
       "Microsoft.Extensions.Caching.Abstractions/9.0.7": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "9.0.7"
@@ -1532,6 +1538,13 @@
       "sha512": "sha512-DLB8n5Z7U8+xCkh+NSrvOlylCmveDg5RpPdqBftq5nU8Yt3vIdBg0X/YkESGDBWUL9h0vxuhgH2aqXL3FYz5tQ==",
       "path": "microsoft.entityframeworkcore.sqlite.core/9.0.7",
       "hashPath": "microsoft.entityframeworkcore.sqlite.core.9.0.7.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/9.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NyRRParn9vUQDkHDeWoPU1/+E+gcHTBQR4Nn5XZPxBE5t6CiXwzl3ag0a6Z2SfrGSPyDDVT39r2cz33ar2xsZg==",
+      "path": "microsoft.entityframeworkcore.tools/9.0.7",
+      "hashPath": "microsoft.entityframeworkcore.tools.9.0.7.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/9.0.7": {
       "type": "package",

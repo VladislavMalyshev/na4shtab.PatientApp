@@ -11,6 +11,7 @@
     <ItemGroup>
         <AvaloniaResource Include="Assets\**"/>
         <Folder Include="Infrastructure\Extentions\" />
+        <Folder Include="Migrations\" />
     </ItemGroup>
 
     <ItemGroup>
