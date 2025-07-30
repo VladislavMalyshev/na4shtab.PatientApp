@@ -34,3 +34,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Владислав/RiderProjects/na4shtab.PatientApp/na4shtab.PatientApp/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Владислав/RiderProjects/na4shtab.PatientApp/na4shtab.PatientApp/Views/PatientListView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

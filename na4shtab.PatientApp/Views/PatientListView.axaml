@@ -1,0 +1,53 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:na4shtab.PatientApp.ViewModels"
+    xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+    x:Class="na4shtab.PatientApp.Views.PatientListView">
+
+    <!-- Привязываем DataContext к вашей VM -->
+    <UserControl.DataContext>
+        <vm:PatientListViewModel/>
+    </UserControl.DataContext>
+
+    <DockPanel>
+        <!-- Панель поиска и кнопок -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="4">
+            <TextBox Width="200"
+                     Watermark="Поиск..."
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Добавить"
+                    Command="{Binding AddPatientCommand}"
+                    Margin="2"/>
+            <Button Content="Изменить"
+                    Command="{Binding EditPatientCommand}"
+                    Margin="2"/>
+            <Button Content="Удалить"
+                    Command="{Binding DeletePatientCommand}"
+                    Margin="2"/>
+        </StackPanel>
+
+        <!-- DataGrid из пакета Avalonia.Controls.DataGrid -->
+        <dg:DataGrid
+            Items="{Binding Patients}"
+            SelectedItem="{Binding SelectedPatient}"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            Margin="4">
+            <dg:DataGrid.Columns>
+                <dg:DataGridTextColumn
+                    Header="ФИО"
+                    Binding="{Binding FullName}"
+                    Width="2*"/>
+                <dg:DataGridTextColumn
+                    Header="Дата рождения"
+                    Binding="{Binding BirthDate, StringFormat='dd.MM.yyyy'}"
+                    Width="150"/>
+                <dg:DataGridTextColumn
+                    Header="Контакты"
+                    Binding="{Binding ContactInfo}"
+                    Width="2*"/>
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+    </DockPanel>
+</UserControl>
