@@ -1,4 +1,7 @@
 ﻿using System;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using ReactiveUI;
 using Splat;
 using System.Collections.ObjectModel;
@@ -61,16 +64,30 @@ namespace na4shtab.PatientApp.ViewModels
                 Patients.Add(p);
         }
 
-        private Task AddPatientAsync()
+        private async Task AddPatientAsync()
         {
-            // TODO: открыть диалог PatientEditViewModel(null)
-            return Task.CompletedTask;
+            var vm = new PatientEditViewModel();
+            await ShowDialogAsync(vm);
+            await LoadPatientsAsync();
         }
 
-        private Task EditPatientAsync()
+        private async Task EditPatientAsync()
         {
-            // TODO: открыть диалог PatientEditViewModel(SelectedPatient)
-            return Task.CompletedTask;
+            if (SelectedPatient == null)
+                return;
+
+            var vm = new PatientEditViewModel(SelectedPatient);
+            await ShowDialogAsync(vm);
+            await LoadPatientsAsync();
+        }
+
+        private async Task ShowDialogAsync(PatientEditViewModel vm)
+        {
+            if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                var window = new Views.PatientEditWindow { DataContext = vm };
+                await window.ShowDialog(desktop.MainWindow);
+            }
         }
 
         private async Task DeletePatientAsync()
