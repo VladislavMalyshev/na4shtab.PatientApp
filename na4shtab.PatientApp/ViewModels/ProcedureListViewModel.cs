@@ -7,6 +7,9 @@ using ReactiveUI;
 using Splat;
 using na4shtab.PatientApp.Models;
 using na4shtab.PatientApp.Services;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 
 namespace na4shtab.PatientApp.ViewModels;
 
@@ -61,16 +64,30 @@ public class ProcedureListViewModel : ViewModelBase
             Procedures.Add(p);
     }
 
-    private Task AddProcedureAsync()
+    private async Task AddProcedureAsync()
     {
-        // TODO: open ProcedureEdit dialog
-        return Task.CompletedTask;
+        var vm = new ProcedureEditViewModel();
+        var win = new Views.ProcedureEditWindow { DataContext = vm };
+        await win.ShowDialog(GetMainWindow());
+        await LoadProceduresAsync();
     }
 
-    private Task EditProcedureAsync()
+    private async Task EditProcedureAsync()
     {
-        // TODO: open ProcedureEdit dialog
-        return Task.CompletedTask;
+        if (SelectedProcedure == null)
+            return;
+
+        var vm = new ProcedureEditViewModel(SelectedProcedure);
+        var win = new Views.ProcedureEditWindow { DataContext = vm };
+        await win.ShowDialog(GetMainWindow());
+        await LoadProceduresAsync();
+    }
+
+    private static Avalonia.Controls.Window? GetMainWindow()
+    {
+        if (Avalonia.Application.Current?.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+            return desktop.MainWindow;
+        return null;
     }
 
     private async Task DeleteProcedureAsync()

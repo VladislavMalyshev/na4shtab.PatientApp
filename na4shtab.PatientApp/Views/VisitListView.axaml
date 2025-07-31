@@ -1,0 +1,27 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:na4shtab.PatientApp.ViewModels"
+    xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+    x:Class="na4shtab.PatientApp.Views.VisitListView"
+    x:DataType="vm:VisitListViewModel">
+    <UserControl.DataContext>
+        <vm:VisitListViewModel/>
+    </UserControl.DataContext>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="4">
+            <Button Content="Добавить" Command="{Binding AddVisitCommand}" Margin="2"/>
+            <Button Content="Изменить" Command="{Binding EditVisitCommand}" Margin="2"/>
+            <Button Content="Удалить" Command="{Binding DeleteVisitCommand}" Margin="2"/>
+        </StackPanel>
+        <dg:DataGrid ItemsSource="{Binding Visits}"
+                     SelectedItem="{Binding SelectedVisit}"
+                     AutoGenerateColumns="False" Margin="4">
+            <dg:DataGrid.Columns>
+                <dg:DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat='dd.MM.yyyy'}" Width="150"/>
+                <dg:DataGridTextColumn Header="Пациент" Binding="{Binding Patient.FullName}" Width="2*"/>
+                <dg:DataGridTextColumn Header="Стоимость" Binding="{Binding TotalCost}" Width="150"/>
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+    </DockPanel>
+</UserControl>
