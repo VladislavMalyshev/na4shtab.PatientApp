@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:na4shtab.PatientApp.ViewModels"
+        x:Class="na4shtab.PatientApp.Views.PatientEditWindow"
+        Width="400" Height="250"
+        WindowStartupLocation="CenterOwner"
+        x:DataType="vm:PatientEditViewModel">
+    <StackPanel Margin="10" Spacing="4">
+        <TextBlock Text="ФИО"/>
+        <TextBox Text="{Binding FullName}"/>
+        <TextBlock Text="Дата рождения" Margin="0,8,0,0"/>
+        <DatePicker SelectedDate="{Binding BirthDate}"/>
+        <TextBlock Text="Контакты" Margin="0,8,0,0"/>
+        <TextBox Text="{Binding ContactInfo}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0" Spacing="4">
+            <Button Content="Отмена" Command="{Binding CancelCommand}" Width="80"/>
+            <Button Content="Сохранить" Command="{Binding SaveCommand}" Width="100"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

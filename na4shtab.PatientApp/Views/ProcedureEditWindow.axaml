@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:na4shtab.PatientApp.ViewModels"
+        x:Class="na4shtab.PatientApp.Views.ProcedureEditWindow"
+        Width="400" Height="250"
+        WindowStartupLocation="CenterOwner"
+        x:DataType="vm:ProcedureEditViewModel">
+    <StackPanel Margin="10" Spacing="4">
+        <TextBlock Text="Название"/>
+        <TextBox Text="{Binding Name}"/>
+        <TextBlock Text="Описание" Margin="0,8,0,0"/>
+        <TextBox Text="{Binding Description}"/>
+        <TextBlock Text="Стоимость" Margin="0,8,0,0"/>
+        <TextBox Text="{Binding Cost}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0" Spacing="4">
+            <Button Content="Отмена" Command="{Binding CancelCommand}" Width="80"/>
+            <Button Content="Сохранить" Command="{Binding SaveCommand}" Width="100"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
