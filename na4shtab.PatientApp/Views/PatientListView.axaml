@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vm="clr-namespace:na4shtab.PatientApp.ViewModels"
     xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
-    x:Class="na4shtab.PatientApp.Views.PatientListView">
+    x:Class="na4shtab.PatientApp.Views.PatientListView"
+    x:DataType="vm:PatientListViewModel">
 
     <!-- Привязываем DataContext к вашей VM -->
     <UserControl.DataContext>
@@ -29,10 +30,9 @@
 
         <!-- DataGrid из пакета Avalonia.Controls.DataGrid -->
         <dg:DataGrid
-            Items="{Binding Patients}"
+            ItemsSource="{Binding Patients}"
             SelectedItem="{Binding SelectedPatient}"
             AutoGenerateColumns="False"
-            CanUserAddRows="False"
             Margin="4">
             <dg:DataGrid.Columns>
                 <dg:DataGridTextColumn
