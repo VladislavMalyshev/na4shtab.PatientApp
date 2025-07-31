@@ -7,6 +7,9 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using na4shtab.PatientApp.Models;
 using na4shtab.PatientApp.Services;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 
 namespace na4shtab.PatientApp.ViewModels
 {
@@ -61,16 +64,30 @@ namespace na4shtab.PatientApp.ViewModels
                 Patients.Add(p);
         }
 
-        private Task AddPatientAsync()
+        private async Task AddPatientAsync()
         {
-            // TODO: открыть диалог PatientEditViewModel(null)
-            return Task.CompletedTask;
+            var vm = new PatientEditViewModel();
+            var win = new Views.PatientEditWindow { DataContext = vm };
+            await win.ShowDialog(GetMainWindow());
+            await LoadPatientsAsync();
         }
 
-        private Task EditPatientAsync()
+        private async Task EditPatientAsync()
         {
-            // TODO: открыть диалог PatientEditViewModel(SelectedPatient)
-            return Task.CompletedTask;
+            if (SelectedPatient == null)
+                return;
+
+            var vm = new PatientEditViewModel(SelectedPatient);
+            var win = new Views.PatientEditWindow { DataContext = vm };
+            await win.ShowDialog(GetMainWindow());
+            await LoadPatientsAsync();
+        }
+
+        private static Avalonia.Controls.Window? GetMainWindow()
+        {
+            if (Avalonia.Application.Current?.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+                return desktop.MainWindow;
+            return null;
         }
 
         private async Task DeletePatientAsync()

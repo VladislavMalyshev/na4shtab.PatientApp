@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:na4shtab.PatientApp.ViewModels"
+        xmlns:m="clr-namespace:na4shtab.PatientApp.Models"
+        xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+        x:Class="na4shtab.PatientApp.Views.VisitEditWindow"
+        Width="600" Height="400"
+        WindowStartupLocation="CenterOwner"
+        x:CompileBindings="False">
+    <StackPanel Margin="10" Spacing="4">
+        <TextBlock Text="Дата"/>
+        <DatePicker SelectedDate="{Binding Date}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0" Spacing="8">
+            <StackPanel Width="250">
+                <TextBlock Text="Доступные процедуры"/>
+                <dg:DataGrid ItemsSource="{Binding AvailableProcedures}"
+                             AutoGenerateColumns="False" Height="150">
+                    <dg:DataGrid.Columns>
+                        <dg:DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                        <dg:DataGridTemplateColumn Header="">
+                            <dg:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="+" Command="{Binding DataContext.ToggleProcedureCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </dg:DataGridTemplateColumn.CellTemplate>
+                        </dg:DataGridTemplateColumn>
+                    </dg:DataGrid.Columns>
+                </dg:DataGrid>
+            </StackPanel>
+            <StackPanel Width="250">
+                <TextBlock Text="Выбранные процедуры"/>
+                <dg:DataGrid ItemsSource="{Binding SelectedProcedures}"
+                             AutoGenerateColumns="False" Height="150">
+                    <dg:DataGrid.Columns>
+                        <dg:DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                        <dg:DataGridTemplateColumn Header="">
+                            <dg:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="-" Command="{Binding DataContext.ToggleProcedureCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </dg:DataGridTemplateColumn.CellTemplate>
+                        </dg:DataGridTemplateColumn>
+                    </dg:DataGrid.Columns>
+                </dg:DataGrid>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Margin="0,8,0,0" Text="{Binding TotalCost, StringFormat='Итого: {0}'}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0" Spacing="4">
+            <Button Content="Отмена" Command="{Binding CancelCommand}" Width="80"/>
+            <Button Content="Сохранить" Command="{Binding SaveCommand}" Width="100"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
